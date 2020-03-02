@@ -1,15 +1,5 @@
 import {Field, InputType, ObjectType} from "type-graphql";
 
-
-@InputType()
-export class CertInput {
-    @Field()
-    checkCount: number;
-
-    @Field()
-    functionId: string;
-}
-
 @ObjectType()
 export class CertSign {
     @Field()
@@ -37,8 +27,35 @@ export class CertSign {
     transactionHash?: string;
 }
 
+@InputType()
+export class MethodParam {
+    @Field()
+    name: string;
+
+    @Field()
+    value: string;
+}
+
+@InputType()
+export class CertInput {
+    @Field()
+    checkCount: number;
+
+    @Field()
+    functionName: string;
+
+    @Field()
+    functionId: string;
+
+    @Field(() => [MethodParam])
+    params: [MethodParam]
+}
+
 @ObjectType()
 export class CertOutPut {
+    @Field()
+    encoded: string;
+
     @Field()
     sign: CertSign;
 
@@ -49,5 +66,5 @@ export class CertOutPut {
     expiration: number;
 
     @Field()
-    cert: string;
+    certificate: string;
 }
