@@ -19,9 +19,9 @@ export class CertificateResolver {
         const contract: any = new web3.eth.Contract(contractArtifacts.abi);
 
         // certificate singer's private key to be replaced from config file.
-        const signerPrivateKey: string = "0x1d715754e960770dc46da3704157e3b91fb57c21e50b4f706b8af31272aaf022";
+        const signerPrivateKey: string = "0x20244D96C84FCB6ECB00372F08B30D0ACF87514163788CD0386DA1227CFAAAC8";
         // token address to be replaced from config file.
-        const tokenAddress: string = "0x91620735349a0B25750facc8e3354c9f02B1518B";
+        const tokenAddress: string = "0xefe4a184c8e8556149541577e1f78c48d66ea2f9";
         // temporal certificate to generate encoded abi.
         const tempCert: string = "0x000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
         const certSize: number = 96;
