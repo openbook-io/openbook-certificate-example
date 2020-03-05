@@ -24,7 +24,7 @@ export class CertificateResolver {
         const tokenAddress: string = "0xefe4a184c8e8556149541577e1f78c48d66ea2f9";
         // temporal certificate to generate encoded abi.
         const tempCert: string = "0x000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
-        const certSize: number = 96;
+        const certSize: number = 96 * 2; // 96 bytes
 
         // make params to generate encoded abi.
         const args: string[] = params.map(param => param.value);
