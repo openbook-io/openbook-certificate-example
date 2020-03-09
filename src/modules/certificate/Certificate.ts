@@ -10,7 +10,6 @@ export class CertificateResolver {
         @Arg("data") {
             checkCount,
             functionName,
-            functionId,
             params
         }: CertInput
     ): Promise<CertOutPut | null> {
@@ -24,7 +23,8 @@ export class CertificateResolver {
         const tokenAddress: string = "0xefe4a184c8e8556149541577e1f78c48d66ea2f9";
         // temporal certificate to generate encoded abi.
         const tempCert: string = "0x000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
-        const certSize: number = 96 * 2; // 96 bytes
+        const certLength: number = 96 * 2; // 96 bytes
+        const functionIdLength: number = 5 * 2; // Ox + 4 bytes
 
         // make params to generate encoded abi.
         const args: string[] = params.map(param => param.value);
@@ -33,8 +33,13 @@ export class CertificateResolver {
         // encode abi from params.
         const encodedABI: string = contract.methods[functionName](...args).encodeABI();
 
+        // functionId
+        const functionId: string = encodedABI.substring(0, functionIdLength);
+
+        console.log(functionId)
+
         // extract encoded params from encoded abi.
-        const encodedParams: string = encodedABI.substring(0, encodedABI.length - certSize);
+        const encodedParams: string = encodedABI.substring(0, encodedABI.length - certLength);
 
         // transaction expiration 20 minutes in seconds
         const expiration: number = Math.floor(Number(new Date()) / 1000) + 1200;

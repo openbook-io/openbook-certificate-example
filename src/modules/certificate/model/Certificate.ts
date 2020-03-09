@@ -44,9 +44,6 @@ export class CertInput {
     @Field()
     functionName: string;
 
-    @Field()
-    functionId: string;
-
     @Field(() => [MethodParam])
     params: [MethodParam]
 }
