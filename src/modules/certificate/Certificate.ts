@@ -36,8 +36,6 @@ export class CertificateResolver {
         // functionId
         const functionId: string = encodedABI.substring(0, functionIdLength);
 
-        console.log(functionId)
-
         // extract encoded params from encoded abi.
         const encodedParams: string = encodedABI.substring(0, encodedABI.length - certLength);
 
